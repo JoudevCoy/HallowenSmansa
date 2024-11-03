@@ -1,0 +1,12 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .article {
+    @apply px-6 py-4 w-full;
+    > p {
+      @apply py-4;
+    }
+  }
+}
