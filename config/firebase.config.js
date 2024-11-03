@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getFirestore } from "@firebase/firestore";
+import { getFirestore, doc, setDoc, increment } from "firebase/firestore";
 
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_APIKEY,
@@ -12,5 +12,9 @@ const firebaseConfig = {
   measurementId: import.meta.env.VITE_MEASUREMENTID
 };
 
-export const app = initializeApp(firebaseConfig);
-export const db = getFirestore(app);
+async function logVisit() {
+  const visitDoc = doc(db, "visitors", "visit_count");
+  await setDoc(visitDoc, { count: increment(1) }, { merge: true });
+}
+
+logVisit();

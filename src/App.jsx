@@ -3,9 +3,6 @@ import AdsPop from "./components/AdsPop.jsx";
 import "./App.css";
 import scaryVid from "./assets/video.mp4";
 
-import { doc, setDoc, increment } from "firebase/firestore";
-import { app, db } from "./../config/firebase.config.js";
-
 export default function App() {
   
   const videoEl = React.useRef(null);
@@ -29,10 +26,6 @@ export default function App() {
   
   
   React.useEffect(() => {
-    async function logVisit() {
-      const visitDoc = doc(db, "visitors", "visit_count");
-      await setDoc(visitDoc, { count: increment(1) }, { merge: true });
-    }
 
 
     const unsub = () => {
